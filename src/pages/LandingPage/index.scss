@@ -1,0 +1,110 @@
+.landing_page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+        .promocao_banner{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 25px;
+            background-color: #101820;
+
+        }
+        .promocao_banner span{
+            color: #ffffff;
+            text-align: center;
+        }
+
+        header{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            height: 80px;
+            border-bottom: 1px solid #101820;
+        }
+        .button_header{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 180px;
+            height: 100%;
+            gap: 5px;
+        }
+
+        .hero{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 1550px;
+            height: 655px;
+            margin-top: 70px;
+            background-color: #999b9e;
+
+            div{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                max-width: 580px;
+                margin-top: 200px;
+                gap: 80px;
+                
+                .text1{
+                    color: #ffffff;
+                    font-size: 46px;
+                }
+                .text2{
+                    color: #F24040;
+                    font-size: 24px;
+                }
+            }
+            .imagehero{
+                margin-top: 60px;
+                width: 416px;
+                height: 530px;
+            }
+        }
+
+        .marca_section{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            max-width:1550px;
+            height: 295px;
+            margin-top: 72px;
+            gap: 120px;
+            .container_titulo{
+                display: flex;
+                width: 100%;
+                max-width: 426px;
+                height: 100%;
+                border-radius: 10px;
+                align-items: center;
+                padding: 60px;
+                background-color: #101820;
+                color: #ffffff;
+                h2{
+                    font-size: 36px;
+                    max-width: 240px;
+                }
+            }
+            .container_marcas{
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                max-width: 780px;
+                img{
+                    margin-right: 87px;
+                }
+                .icone{
+                    max-width: 150px;
+                    max-height: 150px;
+                }
+            }
+        }
+}
