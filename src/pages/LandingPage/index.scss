@@ -107,4 +107,32 @@
                 }
             }
         }
+
+        .produto_section{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 47px 141px;
+            margin-top: 72px;
+            width: 100%;
+            max-width: 1854px;
+            height: 591px;
+            border-radius: 8px;
+
+            h1{
+                font-size: 40px;
+            }
+        }
+        .animes_cad{
+            background-color: #F9C22E;
+            h1{
+                color: #ffffff;
+            }
+        }
+        .games_card{
+            background-color: #999b9e;
+            h1{
+                color: #ffffff;
+            }
+        }
 }

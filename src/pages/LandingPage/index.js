@@ -40,8 +40,39 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className='produto_section marvelDc'>
+      <section className='produto_section marvelDc_card'>
         <h1>Marvel e DC</h1>
+        <div className='card_produto'></div> {/* componente futuro */}
+      </section>
+
+      <section className='produto_section animes_cad'>
+        <h1>Animes</h1>
+        <div className='card_produto'></div> {/* componente futuro */}
+      </section>
+
+      <section className='produto_section games_card'>
+        <h1>Games</h1>
+        <div className='card_produto'></div> {/* componente futuro */}
+      </section>
+
+      <section className='whyBuyHere_section'> 
+        <h1>Porque comprar na ToyArk ?</h1>
+        <div className='card_reasons'>
+          <img src='/assets/image/payment.png' alt='icone pagamento flexível'/> {/* componente futuro */}
+          <p>Pagamento flexível</p>
+        </div>
+        <div className='card_reasons'>
+          <img src='/assets/image/payment.png' alt='icone pagamento flexível'/>
+          <p>Sempre com os melhores preços</p>
+        </div>
+        <div className='card_reasons'>
+          <img src='/assets/image/payment.png' alt='icone pagamento flexível'/>
+          <p>Ambiente amigo<br/>Pró consumidor</p>
+        </div>
+        <div className='card_reasons'>
+          <img src='/assets/image/payment.png' alt='icone pagamento flexível'/>
+          <p>Compramos alguns itens</p>
+        </div>
       </section>
 
       
