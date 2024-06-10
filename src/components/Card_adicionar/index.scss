@@ -9,6 +9,7 @@
     padding: 30px 56px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     background-color: #ffff;
+
     h1 {
         font-family: 'Poppins';
         font-size: 36px;
@@ -32,7 +33,11 @@
             overflow: hidden;
             cursor: pointer;
 
-            .imagem-arquivo {}
+            .imagem_nova {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
         }
     }
 
@@ -64,7 +69,8 @@
         display: flex;
         flex-direction: column;
         gap: 50px;
-        button{
+
+        button {
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             cursor: pointer;
@@ -73,9 +79,11 @@
             font-weight: 600;
             transition: transform 0.2s ease-in-out;
         }
-        button:hover{
+
+        button:hover {
             transform: scale(1.05);
         }
+
         .button_salvar {
             font-size: 24px;
             width: 100%;
@@ -83,6 +91,7 @@
             background-color: #F24040;
             color: #ffff;
         }
+
         div {
             display: flex;
             flex-direction: row;

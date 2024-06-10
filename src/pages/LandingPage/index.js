@@ -7,12 +7,39 @@ import Footer from '../../components/Footer';
 import Card_produto from '../../components/Card_produto'
 
 import * as figureApi from '../../Api/figureApi'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 
 export default function LandingPage() {
   const [listaFigures, setListaFigures] = useState([]);
+  const [listaFiguresHeroi, setListaFiguresHeroi] = useState([]);
+  const [listaFiguresAnimes, setListaFiguresAnimes] = useState([]);
+  const [listaFiguresGames, setListaFiguresGames] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    async function fetchFigures() {
+      try {
+        const info = await figureApi.buscarFigures();
+        const infoH = await figureApi.buscarFigurePorCategoria('Heroi');
+        const infoA = await figureApi.buscarFigurePorCategoria('Anime');
+        const infoG = await figureApi.buscarFigurePorCategoria('Game');
+
+        setListaFigures(info);
+        setListaFiguresHeroi(infoH);
+        setListaFiguresAnimes(infoA);
+        setListaFiguresGames(infoG);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchFigures();
+  }, []);
+
 
   return (
     <div className='landing_page'>
@@ -40,23 +67,39 @@ export default function LandingPage() {
         </div>
       </section>
 
+
+
       <section className='produto_section marvelDc_card'>
         <h1>Marvel e DC</h1>
 
         <div className='card_produto'>
-          
+          {listaFiguresHeroi.map(item => (
+            <Card_produto item={item} />
+          ))}
         </div>
 
       </section>
 
+
+
+
+
       <section className='produto_section animes_cad'>
         <h1>Animes</h1>
-        <div className='card_produto'></div> 
+        <div className='card_produto'>
+          {listaFiguresAnimes.map(item => (
+            <Card_produto item={item} />
+          ))}
+        </div>
       </section>
 
       <section className='produto_section games_card'>
         <h1>Games</h1>
-        <div className='card_produto'></div> 
+        <div className='card_produto'>
+          {listaFiguresGames.map(item => (
+            <Card_produto item={item} />
+          ))}
+        </div>
       </section>
 
 

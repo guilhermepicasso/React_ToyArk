@@ -10,7 +10,8 @@
     .img_produto {
         display: flex;
         justify-content: center;
-        background-color: #E7E7E9;
+        background-color: #ffff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
         img {
             max-width: 256px;

@@ -1,23 +1,25 @@
 import './index.scss'
+import {API_ADDRESS} from '../../Api/constant'
 
-export default function Card_detalhe(props) {
+export default function Card_detalhe({item}) {
+    const imagem = item.imagem ? `${API_ADDRESS}/${item.imagem.replace(/\\/g, '/')}`: null;
 
     return(
         <div className='card_detalhe_component'>
 
             <div className='img_area'>
-                <img src='/assets/image/spiderman.png' alt='produto imagem' />
+                <img src={imagem}alt='produto imagem' />
             </div>
 
             <div className='detais_area'>
                 <div className='details_1'>
-                    <h2>Spider Man</h2>
-                    <span>Altura : 20cm</span>
-                    <span>Largura : 20cm</span>
-                    <a>Heroi</a>
+                    <h2>{item.nome}</h2>
+                    <span>Altura : {item.altura}cm</span>
+                    <span>Largura : {item.largura}cm</span>
+                    <a>{item.categoria}</a>
                 </div>
                 <div className='detail_2'>
-                    <h2>R$ 200</h2>
+                    <h2>R$ {item.preco}</h2>
                 </div>
 
             </div>

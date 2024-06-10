@@ -10,10 +10,8 @@ export default function Teste() {
     return (
         <div className='teste'>
             <h1>Pagina de teste</h1>
-            <Card_produto/>
             <Card_adicionar/>
             <Card_produto_painel/>
-            <Card_detalhe/>
         </div>
 
 

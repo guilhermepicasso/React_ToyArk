@@ -26,7 +26,7 @@ export async function salvarFigure(corpo) {
     return r.data;
   }
 
-  export async function buscarAlunoPorId(categoria) {
+  export async function buscarFigurePorCategoria(categoria) {
     let url = API_ADDRESS + '/figure/categoria/' + categoria;
     let r = await axios.get(url);
     return r.data;
@@ -38,7 +38,7 @@ export async function salvarFigure(corpo) {
     return r.data;
   }
 
-  export async function alterarCapa(id, capa) {
+  export async function alterarImagem(id, capa) {
     let url = API_ADDRESS + '/figure/imagem/' + id;
   
     let form = new FormData();
