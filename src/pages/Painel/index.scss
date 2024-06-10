@@ -37,7 +37,7 @@
 
     }
 
-    .painel_content>a {
+    .painel_content button {
         display: flex;
         flex-direction: row;
         width: 200px;
@@ -60,7 +60,7 @@
             font-size: 12px;
         }
     }
-    .painel_content>a:hover{
+    .painel_content button:hover{
         transform: scale(1.05);
     }
 

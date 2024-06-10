@@ -1,7 +1,11 @@
 import './index.scss'
+import axios from 'axios'
 
-export default function Card_adicionar({isOpen, setModalOpen}) {
-    if (isOpen) {
+export default function Card_adicionar({onClose}) {
+    const handleSalvar = () =>{
+        onClose();
+    }
+    
         return (
             <div className='card_adicionar_component'>
                 <h1>Adicionar um Produto</h1>
@@ -51,13 +55,13 @@ export default function Card_adicionar({isOpen, setModalOpen}) {
                         <button>Animes</button>
                         <button>Games</button>
                     </div>
-                    <button onClick={setModalOpen} className='button_salvar' >Salvar</button>
+                    <button className='button_salvar' onClick={handleSalvar}>Salvar</button>
                 </div>
     
             </div>
         )
         
-    }return null
+   
     
 
 }

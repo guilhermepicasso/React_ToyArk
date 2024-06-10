@@ -1,13 +1,18 @@
 import './index.scss';
+import axios from 'axios'
 
 import Header from '../../components/Header';
 import Promocao_banner from '../../components/Promocao_banner';
 import Footer from '../../components/Footer';
 import Card_produto from '../../components/Card_produto'
 
+import * as figureApi from '../../Api/figureApi'
+import { useState } from 'react';
+
 
 
 export default function LandingPage() {
+  const [listaFigures, setListaFigures] = useState([]);
 
   return (
     <div className='landing_page'>
