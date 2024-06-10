@@ -3,9 +3,12 @@ import './index.scss';
 import Header from '../../components/Header';
 import Promocao_banner from '../../components/Promocao_banner';
 import Footer from '../../components/Footer';
+import Card_produto from '../../components/Card_produto'
+
 
 
 export default function LandingPage() {
+
   return (
     <div className='landing_page'>
       <Promocao_banner texto="Compras acima de 300 reais tem 10% de Desconto 🛍️" />
@@ -34,17 +37,21 @@ export default function LandingPage() {
 
       <section className='produto_section marvelDc_card'>
         <h1>Marvel e DC</h1>
-        <div className='card_produto'></div> {/* componente futuro */}
+
+        <div className='card_produto'>
+          
+        </div>
+
       </section>
 
       <section className='produto_section animes_cad'>
         <h1>Animes</h1>
-        <div className='card_produto'></div> {/* componente futuro */}
+        <div className='card_produto'></div> 
       </section>
 
       <section className='produto_section games_card'>
         <h1>Games</h1>
-        <div className='card_produto'></div> {/* componente futuro */}
+        <div className='card_produto'></div> 
       </section>
 
 
@@ -84,7 +91,7 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

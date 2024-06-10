@@ -107,13 +107,23 @@
         margin-top: 72px;
         width: 100%;
         max-width: 1854px;
-        height: 591px;
+        min-height: 591px;
         border-radius: 8px;
+        gap: 40px;
 
         h1 {
             font-size: 40px;
         }
+        .card_produto{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 100%;
+            gap: 82px;
+        }
     }
+
+
 
     .animes_cad {
         background-color: #F9C22E;

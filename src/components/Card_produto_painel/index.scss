@@ -1,0 +1,91 @@
+.card_produto_painelcomponent {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffff;
+    width: 308px;
+    height: 452px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+
+    .img_produto {
+        display: flex;
+        justify-content: center;
+        background-color: #E7E7E9;
+
+        img {
+            max-width: 256px;
+            max-height: 228px;
+        }
+    }
+
+    .card_detalhes {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 10px;
+        margin-bottom: auto;
+
+        h2 {
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+
+            span {
+                font-size: 16px;
+                font-weight: 200;
+            }
+        }
+    }
+
+    .button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+        gap: 20px;
+
+        .detail {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 250px;
+            height: 41px;
+            border-radius: 5px;
+            background-color: #F24040;
+            transition: transform 0.2s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+
+            span {
+                color: #ffff;
+            }
+        }
+
+        a:hover {
+            transform: scale(1.05);
+        }
+
+        div {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 115px;
+                height: 41px;
+                border-radius: 5px;
+                transition: transform 0.2s ease-in-out;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                img{width: 30px; height: 30px;}
+            }
+            .edit {background-color: #F9C22E;}
+            .delete {background-color: #101820;}
+        }
+    }
+}
