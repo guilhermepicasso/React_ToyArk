@@ -167,12 +167,16 @@
                 align-items: center;
                 text-align: center;
                 max-width: 200px;
+                transition: transform 0.2s ease-in-out;
                 gap: 5px;
 
                 .img_reason {
                     max-width: 90px;
                     max-width: 90px;
                 }
+            }
+            .card_reasons:hover{
+                transform: scale(1.3);
             }
 
         }

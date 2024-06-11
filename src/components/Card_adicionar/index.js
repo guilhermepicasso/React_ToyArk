@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import * as figureApi from '../../Api/figureApi'
 import { toast } from 'react-toastify'
 
-export default function Card_adicionar({ onClose , item }) {
+export default function Card_adicionar({ onClose , item , onSave }) {
     const [id, setId] = useState('')
     const [nome, setNome] = useState('')
     const [preco, setPreco] = useState('')
@@ -57,6 +57,7 @@ export default function Card_adicionar({ onClose , item }) {
                         let info = await figureApi.salvarFigure(corpo);
                         const infoImage = await figureApi.alterarImagem(info.id, arquivoImagem);
                         toast.success('Figure inserido com ID: ' + info.id);
+                        onSave();
                     } catch (error) {
                         toast.error('Erro ao inserir a figure: ' + error.message);
                     }
@@ -67,6 +68,7 @@ export default function Card_adicionar({ onClose , item }) {
                         await figureApi.alterarFigure(editItem.id,editItem);
                         await figureApi.alterarImagem(editItem.id, arquivoImagem);
                         toast.success('Figure alterado com sucesso.');
+                        onSave();
                         onClose();
                     } catch (error) {
                         toast.error('Erro ao alterar a figure: ' + error.message);

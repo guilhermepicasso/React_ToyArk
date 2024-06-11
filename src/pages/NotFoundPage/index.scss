@@ -1,0 +1,70 @@
+@import 'https://fonts.googleapis.com/css?family=VT323';
+
+.container {
+    width: 90%;
+    margin: auto;
+    max-width: 640px;
+}
+
+.notFound_page {
+    padding-top: 10%;
+    h1,
+    p,
+    a {
+        color: #F24040;
+        cursor: pointer;
+    }
+    p {
+        font: normal 20px/30px 'VT323', monospace;
+    }
+
+    h1 {
+        font: normal 44px/48px 'VT323', monospace;
+    }
+
+    h2 {
+        font: normal 36px/40px 'VT323', monospace;
+    }
+
+    h3 {
+        font: lighter 24px/30px 'VT323', monospace;
+    }
+
+    h4 {
+        font: lighter 20px/23px 'VT323', monospace;
+    }
+
+    body {
+        background: #ffff;
+    }
+
+    .section_titulo {
+        text-align: center;
+        color: #ffff;
+
+        .messageErro {
+            background: #F24040;
+            padding: 0 15px 2px 13px;
+        }
+    }
+
+    .title {
+        margin-bottom: 50px;
+    }
+
+    .botao {
+        margin-top: 35px;
+        text-align: center;
+
+        .link {
+            text-decoration: none;
+            padding: 0 9px 2px 8px;
+
+            &:hover,
+            &:focus {
+                background: #F24040;
+                color: #ffff;
+            }
+        }
+    }
+}

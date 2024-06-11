@@ -26,27 +26,32 @@ export default function Painel() {
     const [listaFiguresGames, setListaFiguresGames] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [searchTerm, setSearchTerm] = useState('');
 
+    const handleSearch = (e) => {
+        setSearchTerm(e.target.value);
+    };
     useEffect(() => {
-        async function fetchFigures() {
-            try {
-                const info = await figureApi.buscarFigures();
-                const infoH = await figureApi.buscarFigurePorCategoria('Heroi');
-                const infoA = await figureApi.buscarFigurePorCategoria('Anime');
-                const infoG = await figureApi.buscarFigurePorCategoria('Game');
-
-                setListaFigures(info);
-                setListaFiguresHeroi(infoH);
-                setListaFiguresAnimes(infoA);
-                setListaFiguresGames(infoG);
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        }
         fetchFigures();
     }, []);
+
+    async function fetchFigures() {
+        try {
+            const info = await figureApi.buscarFigures();
+            const infoH = await figureApi.buscarFigurePorCategoria('Heroi');
+            const infoA = await figureApi.buscarFigurePorCategoria('Anime');
+            const infoG = await figureApi.buscarFigurePorCategoria('Game');
+
+            setListaFigures(info);
+            setListaFiguresHeroi(infoH);
+            setListaFiguresAnimes(infoA);
+            setListaFiguresGames(infoG);
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    }
 
     const handleOpen = () => {
         setOpen(true);
@@ -56,7 +61,17 @@ export default function Painel() {
         setOpen(false);
     };
 
+    const filteredFiguresHeroi = listaFiguresHeroi.filter(item =>
+        item.nome.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
+    const filteredFiguresAnimes = listaFiguresAnimes.filter(item =>
+        item.nome.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    const filteredFiguresGames = listaFiguresGames.filter(item =>
+        item.nome.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
     return (
         <section className='painel_page'>
@@ -67,7 +82,7 @@ export default function Painel() {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <Card_adicionar onClose={handleClose} />
+                    <Card_adicionar onClose={handleClose} onSave={fetchFigures} />
                 </Box>
             </Modal>
 
@@ -80,22 +95,22 @@ export default function Painel() {
                 </button>
                 <div className='input-section'>
                     <img src='/assets/image/lupa.png' alt='lupa icone' />
-                    <input type="text" className="input_card" />
+                    <input type="text" className="input_card" value={searchTerm} onChange={handleSearch} />
                 </div>
             </div>
             <section className='produto_section marvelDc_card'>
                 <h1>Marvel e DC</h1>
                 <div className='card_produto'>
-                    {listaFiguresHeroi.map(item => (
-                        <Card_produto_painel item={item} />
+                    {filteredFiguresHeroi.map(item => (
+                        <Card_produto_painel key={item.id} item={item} onSave={fetchFigures}/>
                     ))}</div>
             </section>
 
             <section className='produto_section animes_cad'>
                 <h1>Animes</h1>
                 <div className='card_produto'>
-                    {listaFiguresAnimes.map(item => (
-                        <Card_produto_painel item={item} />
+                    {filteredFiguresAnimes.map(item => (
+                        <Card_produto_painel key={item.id} item={item} onSave={fetchFigures} />
                     ))}
                 </div>
             </section>
@@ -103,8 +118,8 @@ export default function Painel() {
             <section className='produto_section games_card'>
                 <h1>Games</h1>
                 <div className='card_produto'>
-                    {listaFiguresGames.map(item => (
-                        <Card_produto_painel item={item} />
+                    {filteredFiguresGames.map(item => (
+                        <Card_produto_painel key={item.id} item={item} onSave={fetchFigures} />
                     ))}
                 </div>
             </section>

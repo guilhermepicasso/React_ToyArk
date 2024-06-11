@@ -5,6 +5,7 @@
     width: 308px;
     height: 452px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
     border-radius: 8px;
 
     .img_produto {
@@ -91,4 +92,8 @@
             .delete {background-color: #101820;}
         }
     }
+}
+.card_produto_painelcomponent:hover{
+    border: 4px inset #F24040;
+    transform: scale(1.03);
 }

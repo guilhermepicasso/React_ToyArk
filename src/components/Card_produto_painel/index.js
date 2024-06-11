@@ -16,7 +16,7 @@ const style = {
     transform: 'translate(-50%, -50%)'
 };
 
-export default function Card_produto_painel({item}) {
+export default function Card_produto_painel({item, onSave}) {
     const imagem = item.imagem ? `${API_ADDRESS}/${item.imagem.replace(/\\/g, '/')}`: null;
     const [open, setOpen] = useState(false);
     const [openEdit, setEditOpen] = useState(false);
@@ -50,6 +50,7 @@ export default function Card_produto_painel({item}) {
               onClick: async () => {
                 let r = await figureApi.removerFigure(item.id);
                 toast.success('Figure removido com sucesso.');
+                onSave();
               }
             },
             { label: 'Não' }
