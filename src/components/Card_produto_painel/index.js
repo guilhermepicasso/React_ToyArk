@@ -1,8 +1,13 @@
 import './index.scss'
+import axios from 'axios'
 import {API_ADDRESS} from '../../Api/constant'
 import React, { useState } from 'react';
 import { Box, Modal } from "@mui/material";
 import Card_detalhe from '../Card_detalhe'
+import Card_adicionar from '../Card_adicionar';
+import * as figureApi from '../../Api/figureApi'
+import { confirmAlert } from 'react-confirm-alert'
+import { toast } from 'react-toastify'
 
 const style = {
     position: 'absolute',
@@ -14,14 +19,43 @@ const style = {
 export default function Card_produto_painel({item}) {
     const imagem = item.imagem ? `${API_ADDRESS}/${item.imagem.replace(/\\/g, '/')}`: null;
     const [open, setOpen] = useState(false);
+    const [openEdit, setEditOpen] = useState(false);
+    const [editedItem, setEditedItem] = useState(null);
 
-    const handleOpen = () => {
-        setOpen(true);
+    const handleOpen = (type) => {
+        if (type === 1) {
+            setOpen(true);
+        }else{
+            setEditOpen(true); 
+            setEditedItem(item); 
+        }
     };
 
-    const handleClose = () => {
-        setOpen(false);
+    const handleClose = (type) => {
+        if (type === 1) {
+            setOpen(false);
+        }else{
+            setEditOpen(false);
+            setEditedItem(null);
+        }
     };
+
+    async function removerFigure(item) {
+        confirmAlert({
+          title: 'Remover Aluno',
+          message: 'Tem certeza que vai remover o aluno?',
+          buttons: [
+            {
+              label: 'Sim',
+              onClick: async () => {
+                let r = await figureApi.removerFigure(item.id);
+                toast.success('Figure removido com sucesso.');
+              }
+            },
+            { label: 'Não' }
+          ]
+        });
+      }
 
     return (
         <div className='card_produto_painelcomponent'>
@@ -37,26 +71,36 @@ export default function Card_produto_painel({item}) {
                 <h2>R$ {item.preco}</h2>
             </div>
             <div className='button'>
-                <a onClick={handleOpen} className='detail'>
+                <a onClick={() => handleOpen(1)} className='detail'>
                     <span>Detalhes</span>
                 </a>
                 <div>
-                    <a className='edit'>
+                    <a onClick={() => handleOpen(2)} className='edit'>
                         <img src='/assets/image/edit.png' />
                     </a>
-                    <a className='delete'>
+                    <a onClick={() => removerFigure(item)} className='delete'>
                         <img src='/assets/image/delete.png' />
                     </a>
                 </div>
             </div>
             <Modal
                 open={open}
-                onClose={handleClose}
+                onClose={() => handleClose(1)}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <Card_detalhe item={item} onClose={handleClose} />
+                    <Card_detalhe item={item} onClose={() => handleClose(1)} />
+                </Box>
+            </Modal>
+            <Modal
+                open={openEdit}
+                onClose={() => handleClose(2)}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style}>
+                    <Card_adicionar item={editedItem} onClose={() => handleClose(2)} />
                 </Box>
             </Modal>
         </div>

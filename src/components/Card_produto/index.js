@@ -25,6 +25,7 @@ export default function Card_produto({item}) {
     const imagem = item.imagem ? `${API_ADDRESS}/${item.imagem.replace(/\\/g, '/')}`: null;
     return (
         <div className='card_produto_component'>
+            
             <div className='img_produto'>
                 <img src={imagem} alt='produto imagem' />
             </div>

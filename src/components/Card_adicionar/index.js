@@ -1,10 +1,10 @@
 import './index.scss'
 import axios from 'axios'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import * as figureApi from '../../Api/figureApi'
 import { toast } from 'react-toastify'
 
-export default function Card_adicionar({ onClose }) {
+export default function Card_adicionar({ onClose , item }) {
     const [id, setId] = useState('')
     const [nome, setNome] = useState('')
     const [preco, setPreco] = useState('')
@@ -13,6 +13,25 @@ export default function Card_adicionar({ onClose }) {
     const [categoria, setCategoria] = useState('')
     const [imagem, setImagem] = useState(null)
     const [selectedIndex, setSelectedIndex] = useState(null);
+    const [arquivoImagem, setArquivoImagem] = useState(null);
+
+    useEffect(() => {
+        if (item) {
+            setId(item.id || '');
+            setNome(item.nome || '');
+            setPreco(item.preco || '');
+            setAltura(item.altura || '');
+            setLargura(item.largura || '');
+            setCategoria(item.categoria || '');
+            if (item.imagem) {
+                if (typeof item.imagem === 'string') {
+                    setImagem(item.imagem);
+                } else if (item.imagem instanceof File) {
+                    setImagem(URL.createObjectURL(item.imagem));
+                }
+            }
+        }
+    }, [item]);
 
     const handleButtonClick = (categoria, index) => {
         setCategoria(categoria);
@@ -22,11 +41,8 @@ export default function Card_adicionar({ onClose }) {
     const handleFileChange = (event) => {
         const file = event.target.files[0];
         if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setImagem(reader.result);
-            };
-            reader.readAsDataURL(file);
+            setArquivoImagem(file);
+            setImagem(URL.createObjectURL(file));
         }
     };
 
@@ -42,10 +58,10 @@ export default function Card_adicionar({ onClose }) {
                     "largura": largura,
                     "categoria": categoria,
                 };
-                if (id == '') {
+                if (!id) {
                     try {
                         let info = await figureApi.salvarFigure(corpo);
-                        const infoImage = await figureApi.alterarImagem(info.id, imagem);
+                        const infoImage = await figureApi.alterarImagem(info.id, arquivoImagem);
                         toast.success('Figure inserido com ID: ' + info.id);
                     } catch (error) {
                         toast.error('Erro ao inserir a figure: ' + error.message);
@@ -53,8 +69,11 @@ export default function Card_adicionar({ onClose }) {
                     onClose();
                 } else {
                     try {
-                        let r = await figureApi.alterarFigure(id, corpo);
+                        let editItem = {...corpo,id};
+                        await figureApi.alterarFigure(editItem.id,editItem);
+                        await figureApi.alterarImagem(editItem.id, arquivoImagem);
                         toast.success('Figure alterado com sucesso.');
+                        onClose();
                     } catch (error) {
                         toast.error('Erro ao alterar a figure: ' + error.message);
                     }
@@ -67,14 +86,14 @@ export default function Card_adicionar({ onClose }) {
 
     return (
         <div className='card_adicionar_component'>
-            <h1>Adicionar um Produto</h1>
+            <h1>{id ? 'Editar Produto' : 'Adicionar um Produto'}</h1>
 
             <div className='area_arquivo'>
                 <label className='arquivo_campo'>
                     <input type="file" onChange={handleFileChange} style={{ display: 'none' }} />
                     {imagem === null ?
                         <img src='/assets/image/plus.png' className='icon' /> :
-                        <img src={imagem} alt="Imagem slecionada" className='imagem_nova' />
+                        <img src={imagem} alt="Imagem selecionada" className='imagem_nova' />
                     }
                 </label>
             </div>
