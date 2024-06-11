@@ -23,13 +23,7 @@ export default function Card_adicionar({ onClose , item }) {
             setAltura(item.altura || '');
             setLargura(item.largura || '');
             setCategoria(item.categoria || '');
-            if (item.imagem) {
-                if (typeof item.imagem === 'string') {
-                    setImagem(item.imagem);
-                } else if (item.imagem instanceof File) {
-                    setImagem(URL.createObjectURL(item.imagem));
-                }
-            }
+            setImagem(item.imagem);
         }
     }, [item]);
 
@@ -141,11 +135,11 @@ export default function Card_adicionar({ onClose , item }) {
             <div className='area_buton'>
                 <div>
                     <button onClick={() => handleButtonClick('Heroi', 0)}
-                        style={{ backgroundColor: selectedIndex === 0 ? '#F24040' : '#ffff' }}>Heroi</button>
+                        style={{ backgroundColor: categoria === 'Heroi' ? '#F24040' : '#ffff' }}>Heroi</button>
                     <button onClick={() => handleButtonClick('Anime', 1)}
-                        style={{ backgroundColor: selectedIndex === 1 ? '#F9C22E' : '#ffff' }}>Animes</button>
+                        style={{ backgroundColor: categoria === 'Anime' ? '#F9C22E' : '#ffff' }}>Animes</button>
                     <button onClick={() => handleButtonClick('Game', 2)}
-                        style={{ backgroundColor: selectedIndex === 2 ? '#808080' : '#ffff' }}>Games</button>
+                        style={{ backgroundColor: categoria === 'Game' ? '#808080' : '#ffff' }}>Games</button>
                 </div>
                 <button className='button_salvar' onClick={salvar} >Salvar</button>
             </div>

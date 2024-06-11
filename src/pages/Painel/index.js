@@ -86,19 +86,27 @@ export default function Painel() {
             <section className='produto_section marvelDc_card'>
                 <h1>Marvel e DC</h1>
                 <div className='card_produto'>
-                    {listaFigures.map(item => (
+                    {listaFiguresHeroi.map(item => (
                         <Card_produto_painel item={item} />
                     ))}</div>
             </section>
 
             <section className='produto_section animes_cad'>
                 <h1>Animes</h1>
-                <div className='card_produto'></div>
+                <div className='card_produto'>
+                    {listaFiguresAnimes.map(item => (
+                        <Card_produto_painel item={item} />
+                    ))}
+                </div>
             </section>
 
             <section className='produto_section games_card'>
                 <h1>Games</h1>
-                <div className='card_produto'></div>
+                <div className='card_produto'>
+                    {listaFiguresGames.map(item => (
+                        <Card_produto_painel item={item} />
+                    ))}
+                </div>
             </section>
             <Footer />
         </section>
