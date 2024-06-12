@@ -42,8 +42,8 @@ export default function Card_produto_painel({item, onSave}) {
 
     async function removerFigure(item) {
         confirmAlert({
-          title: 'Remover Aluno',
-          message: 'Tem certeza que vai remover o aluno?',
+          title: 'Remover Figure',
+          message: 'Tem certeza que vai remover a Figure?',
           buttons: [
             {
               label: 'Sim',
