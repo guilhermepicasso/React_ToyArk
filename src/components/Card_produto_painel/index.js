@@ -101,7 +101,7 @@ export default function Card_produto_painel({item, onSave}) {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <Card_adicionar item={editedItem} onClose={() => handleClose(2)} />
+                    <Card_adicionar item={editedItem} onClose={() => handleClose(2)} onSave={onSave} />
                 </Box>
             </Modal>
         </div>

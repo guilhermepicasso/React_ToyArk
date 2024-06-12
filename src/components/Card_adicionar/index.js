@@ -3,6 +3,8 @@ import axios from 'axios'
 import { useState, useEffect } from 'react';
 import * as figureApi from '../../Api/figureApi'
 import { toast } from 'react-toastify'
+import {API_ADDRESS} from '../../Api/constant'
+
 
 export default function Card_adicionar({ onClose , item , onSave }) {
     const [id, setId] = useState('')
@@ -14,6 +16,7 @@ export default function Card_adicionar({ onClose , item , onSave }) {
     const [imagem, setImagem] = useState(null)
     const [selectedIndex, setSelectedIndex] = useState(null);
     const [arquivoImagem, setArquivoImagem] = useState(null);
+    const [imagemAlterada, setImagemAlterada] = useState(false);
 
     useEffect(() => {
         if (item) {
@@ -23,7 +26,8 @@ export default function Card_adicionar({ onClose , item , onSave }) {
             setAltura(item.altura || '');
             setLargura(item.largura || '');
             setCategoria(item.categoria || '');
-            setImagem(item.imagem);
+            const imagemURL = item.imagem ? `${API_ADDRESS}/${item.imagem.replace(/\\/g, '/')}`: null;
+            setImagem(imagemURL || '');
         }
     }, [item]);
 
@@ -37,6 +41,7 @@ export default function Card_adicionar({ onClose , item , onSave }) {
         if (file) {
             setArquivoImagem(file);
             setImagem(URL.createObjectURL(file));
+            setImagemAlterada(true);
         }
     };
 
@@ -55,28 +60,30 @@ export default function Card_adicionar({ onClose , item , onSave }) {
                 if (!id) {
                     try {
                         let info = await figureApi.salvarFigure(corpo);
-                        const infoImage = await figureApi.alterarImagem(info.id, arquivoImagem);
+                        await figureApi.alterarImagem(info.id, arquivoImagem);
                         toast.success('Figure inserido com ID: ' + info.id);
-                        onSave();
                     } catch (error) {
                         toast.error('Erro ao inserir a figure: ' + error.message);
                     }
-                    onClose();
                 } else {
                     try {
                         let editItem = {...corpo,id};
                         await figureApi.alterarFigure(editItem.id,editItem);
-                        await figureApi.alterarImagem(editItem.id, arquivoImagem);
+                        if (imagemAlterada) {
+                            await figureApi.alterarImagem(editItem.id, arquivoImagem);
+                            toast.success('Imagem Alterada');
+                        }
                         toast.success('Figure alterado com sucesso.');
-                        onSave();
-                        onClose();
                     } catch (error) {
                         toast.error('Erro ao alterar a figure: ' + error.message);
                     }
                 }
+                onClose();
+                onSave();
             }
         } catch (error) {
             toast.error('Ocorreu um erro inesperado: ' + error.message);
+            console.error("Erro:", error);
         }
     }
 
