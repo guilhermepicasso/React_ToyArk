@@ -85,7 +85,6 @@ export default function Painel() {
                     <Card_adicionar onClose={handleClose} onSave={fetchFigures} />
                 </Box>
             </Modal>
-
             <Promocao_banner texto="Bem Vindo ao seu painel administrativo" />
             <Header opcao={2} />
             <div className='painel_content'>
@@ -98,31 +97,35 @@ export default function Painel() {
                     <input type="text" className="input_card" value={searchTerm} onChange={handleSearch} />
                 </div>
             </div>
-            <section className='produto_section marvelDc_card'>
-                <h1>Marvel e DC</h1>
-                <div className='card_produto'>
-                    {filteredFiguresHeroi.map(item => (
-                        <Card_produto_painel key={item.id} item={item} onSave={fetchFigures}/>
-                    ))}</div>
-            </section>
-
-            <section className='produto_section animes_cad'>
-                <h1>Animes</h1>
-                <div className='card_produto'>
-                    {filteredFiguresAnimes.map(item => (
-                        <Card_produto_painel key={item.id} item={item} onSave={fetchFigures} />
-                    ))}
-                </div>
-            </section>
-
-            <section className='produto_section games_card'>
-                <h1>Games</h1>
-                <div className='card_produto'>
-                    {filteredFiguresGames.map(item => (
-                        <Card_produto_painel key={item.id} item={item} onSave={fetchFigures} />
-                    ))}
-                </div>
-            </section>
+            {filteredFiguresHeroi.length > 0 && (
+                <section className='produto_section marvelDc_card'>
+                    <h1>Marvel e DC</h1>
+                    <div className='card_produto'>
+                        {filteredFiguresHeroi.map(item => (
+                            <Card_produto_painel key={item.id} item={item} onSave={fetchFigures} />
+                        ))}</div>
+                </section>
+            )}
+            {filteredFiguresAnimes.length > 0 && (
+                <section className='produto_section animes_cad'>
+                    <h1>Animes</h1>
+                    <div className='card_produto'>
+                        {filteredFiguresAnimes.map(item => (
+                            <Card_produto_painel key={item.id} item={item} onSave={fetchFigures} />
+                        ))}
+                    </div>
+                </section>
+            )}
+            {filteredFiguresGames.length > 0 && (
+                <section className='produto_section games_card'>
+                    <h1>Games</h1>
+                    <div className='card_produto'>
+                        {filteredFiguresGames.map(item => (
+                            <Card_produto_painel key={item.id} item={item} onSave={fetchFigures} />
+                        ))}
+                    </div>
+                </section>
+            )}
             <Footer />
         </section>
     )
