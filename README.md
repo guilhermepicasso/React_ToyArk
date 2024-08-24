@@ -28,5 +28,5 @@
   - **MySQL:** Banco de dados relacional
   - **Multer:** Para criação de Storage e armazenamento de imagens.
 
-# API NodeJS : https://github.com/guilhermepicasso/API_ToyArk
-# Figma link : https://www.figma.com/design/U9xPJgiGwoGZYTBbsLa3y1/TOY-ARK?node-id=0-1&t=dyhL40igAEGafmT9-1
+API NodeJS : https://github.com/guilhermepicasso/API_ToyArk
+Figma link : https://www.figma.com/design/U9xPJgiGwoGZYTBbsLa3y1/TOY-ARK?node-id=0-1&t=dyhL40igAEGafmT9-1
