@@ -28,18 +28,6 @@
   - **MySQL:** Banco de dados relacional
   - **Multer:** Para criação de Storage e armazenamento de imagens.
 
-## Demostração
-
-### Landing Page
-![LandingPage](https://github.com/user-attachments/assets/4f459223-cd8d-449f-a7e0-54d6e3447556)
-
-### Login
-![LoginPage](https://github.com/user-attachments/assets/0a2c3aea-a49c-4987-948a-3e0fd1733972)
-
-### Admin area
-![AdminPage](https://github.com/user-attachments/assets/de2960f7-326e-48f9-9978-1256b631ebb8)
-![InsertArea](https://github.com/user-attachments/assets/eec0220e-d3da-4682-8f52-a9d871d0b79f)
-
 ## Setup do Projeto
 
 ### 1. Clonar o Repositório
@@ -76,3 +64,16 @@ PAra utilizar o programa de forma funcional é preciso executar a API Node do si
 
 - **API NodeJS**  https://github.com/guilhermepicasso/API_ToyArk
 - **Figma link**  https://www.figma.com/design/U9xPJgiGwoGZYTBbsLa3y1/TOY-ARK?node-id=0-1&t=dyhL40igAEGafmT9-1
+
+## Demostração
+
+### Landing Page
+![LandingPage](https://github.com/user-attachments/assets/4f459223-cd8d-449f-a7e0-54d6e3447556)
+
+### Login
+![LoginPage](https://github.com/user-attachments/assets/0a2c3aea-a49c-4987-948a-3e0fd1733972)
+
+### Admin area
+![AdminPage](https://github.com/user-attachments/assets/de2960f7-326e-48f9-9978-1256b631ebb8)
+![InsertArea](https://github.com/user-attachments/assets/eec0220e-d3da-4682-8f52-a9d871d0b79f)
+
